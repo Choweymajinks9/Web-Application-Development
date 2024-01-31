@@ -38,7 +38,6 @@ const CartItems = () => {
   };
 
   const applyPromoCode = () => {
-    // You can replace this with your actual promo code validation logic
     // For simplicity, using a hardcoded promo code and discount
     if (promoCode === 'SAVE10') {
       setDiscount(10); // Apply a 10% discount

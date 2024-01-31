@@ -82,6 +82,8 @@ const Products = mongoose.model("Product",{
     },
 })
 
+// Creating API for adding products
+
 app.post('/addproduct',async (req,res)=>{
     console.log('Request Body',req.body);
     let products = await Products.find({});
