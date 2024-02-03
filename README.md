@@ -6,6 +6,7 @@ Table of Contents:
 2.  Installation Instructions
 3.  Instructions on running application
 4.  Navigating the website
+5.  Testing
 
 1.  Overview:
 This is an e-commerce website selling toys. It is a colourful, fun and easy website to navigate.  The frontend is built using React.js for the building of the user interface.  Utilising React Router for client-side routing and styling employs CSS for basic styling of components.
@@ -23,6 +24,7 @@ Prerequisites:
 Visual Studio Code (VSCode)
 Node.js
 MongoDB
+Extension for VSCode:  Thunder Client
 
 VSCode:
 Visit the official Visual Studio Code website: https://code.visualstudio.com/.  Download the installer for your operating system and follow the instructions provided by your operating system.
@@ -36,8 +38,11 @@ VSCode also supports extensions that can enhance your development experience.  T
 Node.js:
 Install Node.js on your machine.  You can download from https://nodejs.org/.
 
-MongoDB:
-Install MongoDB on your machine by following instructions at https://docs.mongodb.com/manual/installation/.
+MongoDB Compass:
+Install MongoDB Compass on your machine by following instructions at https://www.mongodb.com/docs/compass/current/install/.
+
+Thunder Client:
+This is an extension that will be found in the extension market in VSCode.  Search Thunder Client from creator Ranga Vadhineni, install and it is automatically enabled, if not, enable the extension.  The icon, lighting bolt encircled can be found in the far left menu of VSCode.
 
 3.  Instructions on running application
 
@@ -66,12 +71,11 @@ The backend should be running on http://localhost:4000.  The terminal console wi
     res.send("Express App is Running")
 
 MongoDB:
-There is a connection string that is located in index.js in the backend folder that connects to MongoDB Atlas which is cloud-based.  It is configured to allow all IP addresses to connect to the database.  The string (with comment prestring) is and includes the username and password for an easy connection:
+There is a connection string that is located in index.js in the backend folder that connects to the cluster hosted by MongoDB.  Open your MongoDB Compass app on your pc and paste the following URI into:
 
-    // Database Connection with MongoDB
-    mongoose.connect("mongodb+srv://mpsstore001:01mystoreisOP3n@cluster0.4hmk1ep.mongodb.net/mpsstore");
+mongodb+srv://mpsstore001:01mystoreisOP3n@cluster0.4hmk1ep.mongodb.net/mpsstore
 
-There is no need to create your own user profile on MongoDB Atlas to use the database connection.
+It is configured to allow all IP addresses to connect to the database.  The string (with comment prestring) is and includes the username and password for an easy connection.  Click the "Save&Connect" button to connect to the database.  You will be connected to the mpsstore database, you will find under mpsstore database, both products data and user data.
 
 Frontend Setup (React.js):
 Working in your folder which hosts your frontend, backend and admin folders.  Open a terminal for this root directory and change the directory to the frontend by typing:
@@ -126,6 +130,18 @@ On the homepage, scroll down to the Exclusive offers for you container and click
 
 Newsletter:
 At the bottom of the homepage, there is a container with an input to put in a valid email address to subscribe to the newsletter.  If the email address is not recognised as a valid email address, a prompt will display alerting to the fact.
+
+5.  Testing:
+To test endpoints, we will make use of Thunder Client, the extension on VSCode.  Ensure that the backend has been started.  Refer above to point 3.  Click the icon and then click "New Request", choose POST and test the first API.  The URL is http://localhost:4000/upload.  Below this, click "Body" and then click "Form".  Below this you will see "Form Fields" and "File".  Under "File", check "product" and click "choose file" and choose an image file and then click the blue "SEND" button.  If passed, you will see under "Response" in the right section, the following message:
+
+{
+  "success": 1,
+  "image_url": "http://localhost:4000/images/product_1706903257301.png"
+}
+
+Copy the URL of the uploaded image and open a new tab in your browser and paste the URL in the address bar.  The image should load.
+
+To test user creation for logging in, create a user by providing an email address for user and a password and save and log in.  To confirm that the user has been saved in the backend, open your MongoDB compass app, go to users under mpsstore and if successful, you will find the newly created user.
 
 
 
